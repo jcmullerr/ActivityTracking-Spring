@@ -10,8 +10,11 @@ import java.util.Optional;
 
 @Service
 public class ActivityService {
-    @Autowired
     private ActivityRepository activityRepository;
+    @Autowired
+    public ActivityService(ActivityRepository activityRepository) {
+        this.activityRepository = activityRepository;
+    }
 
     public Activity create(ActivityDTO data){
         var newActivity = new Activity();
@@ -20,7 +23,7 @@ public class ActivityService {
     }
 
     public Optional<Activity> getById(String id){
-        return activityRepository.findActivityById(id);
+        return activityRepository.findById(id);
     }
 
     public void deleteById(String id){ activityRepository.deleteById(id); }

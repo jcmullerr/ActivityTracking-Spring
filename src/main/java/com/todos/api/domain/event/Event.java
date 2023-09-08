@@ -2,11 +2,9 @@ package com.todos.api.domain.event;
 
 import com.todos.api.domain.activity.Activity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity(name = "events")
@@ -14,13 +12,14 @@ import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    private Date createdDate;
+    private LocalDate createdDate;
     @ManyToOne
     @JoinColumn(name="activity_id")
     private Activity activity;
